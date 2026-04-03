@@ -1,3 +1,4 @@
+
 import dotenv from "dotenv";
 dotenv.config();
 
@@ -70,6 +71,10 @@ const Puppies = sequelize.define(
 
 const ASGARDEO_BASE_URL = process.env.ASGARDEO_BASE_URL;
 
+if (!ASGARDEO_BASE_URL) {
+  throw new Error("Missing ASGARDEO_BASE_URL in environment variables");
+}
+
 const JWKS = createRemoteJWKSet(
   new URL(`${ASGARDEO_BASE_URL}/oauth2/jwks`)
 );
@@ -85,7 +90,6 @@ const authenticateToken = async (req, res, next) => {
     }
 
     const token = authHeader.split(" ")[1];
-
     const { payload } = await jwtVerify(token, JWKS);
 
     req.userId = payload.sub;
@@ -100,7 +104,6 @@ app.get("/", (req, res) => {
   res.send("Hello World!");
 });
 
-// GET all puppies for logged-in user
 app.get("/puppies", authenticateToken, async (req, res) => {
   try {
     const puppies = await Puppies.findAll({
@@ -114,7 +117,6 @@ app.get("/puppies", authenticateToken, async (req, res) => {
   }
 });
 
-// GET one puppy for logged-in user
 app.get("/puppies/:id", authenticateToken, async (req, res) => {
   try {
     const puppy = await Puppies.findOne({
@@ -134,7 +136,6 @@ app.get("/puppies/:id", authenticateToken, async (req, res) => {
   }
 });
 
-// POST create puppy for logged-in user
 app.post("/puppies", authenticateToken, async (req, res) => {
   try {
     const { name, age, breed } = req.body;
@@ -158,7 +159,6 @@ app.post("/puppies", authenticateToken, async (req, res) => {
   }
 });
 
-// PUT update puppy only if it belongs to logged-in user
 app.put("/puppies/:id", authenticateToken, async (req, res) => {
   try {
     const puppy = await Puppies.findOne({
@@ -186,7 +186,6 @@ app.put("/puppies/:id", authenticateToken, async (req, res) => {
   }
 });
 
-// DELETE puppy only if it belongs to logged-in user
 app.delete("/puppies/:id", authenticateToken, async (req, res) => {
   try {
     const puppy = await Puppies.findOne({
@@ -221,14 +220,12 @@ const startServer = async () => {
       console.log(`Server is running on port ${PORT}`);
     });
   } catch (err) {
-    console.error("Error: ", err);
+    console.error("Error:", err);
     process.exit(1);
   }
 };
 
 startServer();
-
-
 
 
 

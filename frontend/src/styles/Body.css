@@ -1,0 +1,129 @@
+.body-container {
+  width: 100%;
+  max-width: 980px;
+  margin: 0 auto;
+  padding: 1rem 1rem 2rem;
+  color: white;
+}
+
+.table-card,
+.form-card {
+  background: rgba(255, 255, 255, 0.045);
+  border: 1px solid rgba(255, 255, 255, 0.09);
+  border-radius: 22px;
+  padding: 1.5rem;
+  margin-bottom: 1.8rem;
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.28);
+  backdrop-filter: blur(6px);
+}
+
+.section-title {
+  text-align: center;
+  margin: 0 0 1.2rem;
+  font-size: 2rem;
+  font-weight: 800;
+  color: white;
+}
+
+.puppy-table {
+  width: 100%;
+  border-collapse: collapse;
+  overflow: hidden;
+  border-radius: 14px;
+}
+
+.puppy-table th,
+.puppy-table td {
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  padding: 14px 16px;
+  text-align: center;
+  color: white;
+}
+
+.puppy-table th {
+  background: rgba(255, 255, 255, 0.08);
+  font-weight: 700;
+}
+
+.puppy-table tr:hover {
+  background: rgba(255, 255, 255, 0.03);
+}
+
+.action-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 0.55rem;
+  flex-wrap: wrap;
+}
+
+.puppy-form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.85rem;
+  flex-wrap: wrap;
+}
+
+.form-input,
+.table-input {
+  background: rgba(255, 255, 255, 0.04);
+  color: white;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  border-radius: 10px;
+  padding: 0.8rem 0.9rem;
+  outline: none;
+  box-sizing: border-box;
+}
+
+.form-input::placeholder,
+.table-input::placeholder {
+  color: rgba(255, 255, 255, 0.45);
+}
+
+.form-input {
+  min-width: 150px;
+}
+
+.table-input {
+  width: 100%;
+}
+
+.btn {
+  border: none;
+  border-radius: 10px;
+  padding: 0.72rem 1rem;
+  color: white;
+  font-weight: 700;
+  cursor: pointer;
+  transition: transform 0.2s ease, opacity 0.2s ease;
+}
+
+.btn:hover {
+  transform: translateY(-1px);
+  opacity: 0.95;
+}
+
+.btn-edit {
+  background: #2563eb;
+}
+
+.btn-delete {
+  background: #dc2626;
+}
+
+.btn-save {
+  background: #16a34a;
+}
+
+.btn-cancel {
+  background: #6b7280;
+}
+
+.btn-add {
+  background: #7c3aed;
+}
+
+.empty-row td {
+  padding: 2rem 1rem;
+  color: rgba(255, 255, 255, 0.7);
+}

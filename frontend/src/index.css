@@ -1,0 +1,22 @@
+:root {
+  font-family: Inter, Arial, sans-serif;
+  color: white;
+  background: #0b1020;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  min-height: 100vh;
+  background:
+    radial-gradient(circle at top, rgba(59, 130, 246, 0.18), transparent 30%),
+    linear-gradient(135deg, #050816, #0b1530 45%, #091225 100%);
+}
+
+#root {
+  min-height: 100vh;
+}
